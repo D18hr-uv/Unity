@@ -8,7 +8,7 @@ using Newtonsoft.Json;
 public class EtherCalcDataFetcher : MonoBehaviour
 {
     // Replace with your actual EtherCalc URL
-    private string etherCalcUrl = "https://ethercalc.net/ap1u7www1hfq";
+    private string etherCalcUrl = "https://ethercalc.net/4p864404nemo.json";
 
     void Start()
     {
@@ -36,13 +36,13 @@ public class EtherCalcDataFetcher : MonoBehaviour
 
     void ParseData(string jsonData)
     {
+        Debug.Log("Received Data: " + jsonData);  // Log the received data
+
         try
         {
-            // Deserialize JSON data into SpreadsheetData object
             SpreadsheetData data = JsonConvert.DeserializeObject<SpreadsheetData>(jsonData);
             if (data != null)
             {
-                // Find DataVisualizer component in the scene
                 DataVisualizer visualizer = FindObjectOfType<DataVisualizer>();
                 if (visualizer != null)
                 {
@@ -64,7 +64,6 @@ public class EtherCalcDataFetcher : MonoBehaviour
         }
     }
 }
-
 // Define data structures here or in separate files
 [System.Serializable]
 public class SpreadsheetData
@@ -77,3 +76,4 @@ public class Row
 {
     public List<string> cells;
 }
+
